@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "19425949508",
+    "firebase_url": "https://fellahty-54bed.firebaseio.com",
+    "project_id": "fellahty-54bed",
+    "storage_bucket": "fellahty-54bed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19425949508:android:25ed687d45238e34",
+        "android_client_info": {
+          "package_name": "com.fil.fellahty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19425949508-3hkqfa33k3a93l5vb95ng5fmf2p00jna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fil.fellahty",
+            "certificate_hash": "f8a99bfdbef54b56d5e3f8bf32751202f42124b1"
+          }
+        },
+        {
+          "client_id": "19425949508-v4q4p304jsf0a39aeobh53m9qqtmlkmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7ILHr1bzfWa7SuXqr_4L1_ULSRh4kMs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19425949508-v4q4p304jsf0a39aeobh53m9qqtmlkmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

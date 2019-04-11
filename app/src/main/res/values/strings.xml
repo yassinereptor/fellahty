@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Fellahty</string>
+    <string name="login_phone_number">Email or Phone Number</string>
+    <string name="login_text_or">Or</string>
+    <string name="login_text_dont_have_account">Don\'t have an account ?</string>
+    <string name="login_password">Password</string>
+    <string name="login_forget_password">Forget password ?</string>
+    <string name="signup_name">Name</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_phone_number">Phone number</string>
+    <string name="signup_already_have_account">Already have account !</string>
+    <string name="signup_sign_in">Sign In</string>
+    <string name="login_sign_up">Sign Up</string>
+</resources>
