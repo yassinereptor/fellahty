@@ -42,8 +42,18 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:textColor="@color/colorAccentDarker"
         android:background="@drawable/btn_rounded_light_press"
         android:text="Skip" />
+    <TextView
+        android:id="@+id/btn_resend_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resend"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:gravity="center"/>
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.fil.fellahty;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -41,12 +42,12 @@ import es.dmoral.toasty.Toasty;
 import static com.fil.fellahty.classes.Functions.reformate_phone;
 import static com.fil.fellahty.classes.Functions.verify_signup;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity  implements DialogInterface.OnDismissListener {
 
     private FirebaseAuth mAuth;
     private TextInputEditText signup_email;
     private TextInputEditText signup_name;
-    private TextInputEditText signup_phone;
+    public TextInputEditText signup_phone;
     private TextInputEditText signup_password;
     private Button btn_signup;
     private TextView btn_signin;
@@ -54,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     private String mVerificationId;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    public PhoneAuthProvider.ForceResendingToken mResendToken;
     private AuthCredential mCredential;
     public String mCode;
 
@@ -124,10 +125,8 @@ public class SignupActivity extends AppCompatActivity {
                 String phone = signup_phone.getText().toString();
                 String password = signup_password.getText().toString();
 
-                //if(verify_signup(SignupActivity.this, signup_email, signup_name, signup_phone, signup_password))
-                    //signup_user(email, password, name, phone);
-
-                showSMSDialog();
+                if(verify_signup(SignupActivity.this, signup_email, signup_name, signup_phone, signup_password))
+                    signup_user(email, password, name, phone);
 
             }
         });
@@ -234,7 +233,7 @@ public class SignupActivity extends AppCompatActivity {
         return credential;
     }
 
-    private void resendVerificationCode(String phoneNumber,
+    public void resendVerificationCode(String phoneNumber,
                                         PhoneAuthProvider.ForceResendingToken token) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
@@ -242,7 +241,7 @@ public class SignupActivity extends AppCompatActivity {
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks,         // OnVerificationStateChangedCallbacks
-                token);             // ForceResendingToken from callbacks
+                token);            // ForceResendingToken from callbacks
     }
 
     private void open_signin_activity()
@@ -267,5 +266,11 @@ public class SignupActivity extends AppCompatActivity {
         SMSCodeDialogFragment editNameDialog = new SMSCodeDialogFragment();
         editNameDialog.show(getSupportFragmentManager().beginTransaction(), "fragment_edit_name");
 
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        if(mCode != null && !mCode.isEmpty())
+            link_user_phone(verifyPhoneNumberWithCode(mVerificationId, mCode));
     }
 }

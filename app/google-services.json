@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "19425949508-ta59p717h414ahaanpeu8jjfrna0phl2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fil.fellahty",
+            "certificate_hash": "ba3185b957626231dd9a733bfeea97d12bdc2de1"
+          }
+        },
+        {
           "client_id": "19425949508-v4q4p304jsf0a39aeobh53m9qqtmlkmg.apps.googleusercontent.com",
           "client_type": 3
         }
