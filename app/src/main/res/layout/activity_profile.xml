@@ -5,63 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile"
+    android:orientation="vertical"
     android:background="#F6F6F6">
-    <LinearLayout
-        android:id="@+id/info_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_holder">
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:checkedButton="@id/chart_btn"
-            >
-            <RadioButton
-                android:id="@+id/chart_btn"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:paddingTop="10dp"
-                android:drawableTop="@drawable/bar_chart"
-                android:background="@drawable/btn_toggle"
-                android:layout_weight="1"
-                android:button="@null"
-                android:textAlignment="center"/>
-            <RadioButton
-                android:id="@+id/info_btn"
-                android:layout_width="match_parent"
-                android:paddingTop="10dp"
-                android:drawableTop="@drawable/information"
-                android:background="@drawable/btn_toggle"
-                android:layout_height="50dp"
-                android:button="@null"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-            <RadioButton
-                android:id="@+id/settings_btn"
-                android:layout_width="match_parent"
-                android:background="@drawable/btn_toggle"
-                android:paddingTop="10dp"
-                android:drawableTop="@drawable/settings"
-                android:layout_height="50dp"
-                android:button="@null"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-        </RadioGroup>
-    </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/photo_profile"
+        android:layout_width="138dp"
+        android:layout_height="107dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:id="@+id/fr_profile"
+        android:src="@drawable/pdp"
+        app:layout_constraintBottom_toTopOf="@+id/info_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/rounded_holder"
+        android:orientation="vertical"
+        android:padding="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_layout">
+        tools:ignore="MissingConstraints">
 
-    </FrameLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/chart_btn"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/chart_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_toggle"
+                android:button="@null"
+                android:drawableTop="@drawable/bar_chart"
+                android:paddingTop="10dp"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/info_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_toggle"
+                android:button="@null"
+                android:drawableTop="@drawable/information"
+                android:paddingTop="10dp"
+                android:textAlignment="center" />
+
+            <RadioButton
+                android:id="@+id/settings_btn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_toggle"
+                android:button="@null"
+                android:drawableTop="@drawable/settings"
+                android:paddingTop="10dp"
+                android:textAlignment="center" />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/fr_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_layout">
+
+        </FrameLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
