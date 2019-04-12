@@ -8,7 +8,7 @@
     <string name="signup_name">Name</string>
     <string name="signup_email">Email</string>
     <string name="signup_phone_number">Phone number</string>
-    <string name="signup_already_have_account">Already have account !</string>
+    <string name="signup_already_have_account">Already have an account !</string>
     <string name="signup_sign_in">Sign In</string>
     <string name="login_sign_up">Sign Up</string>
 </resources>
