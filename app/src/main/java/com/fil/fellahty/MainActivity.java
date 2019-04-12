@@ -3,6 +3,7 @@ package com.fil.fellahty;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView btn_signup;
     private ImageButton btn_google_sigin;
+    private Button btn_login;
     private FirebaseAuth mAuth;
+    private TextInputEditText signin_email;
+    private TextInputEditText signin_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        btn_login = findViewById(R.id.btn_login);
         btn_signup = findViewById(R.id.btn_signup);
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 open_signup_activity();
             }
         });
-
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = signin_email.getText().toString();
+                String password = signin_password.getText().toString();
+                String email_err = "Email required !";
+                String password_err = "Email required !";
+                if(verify_string(signin_email, email_err) && verify_string(signin_password, password_err))
+                    signin_email(email, password);
+            }
+        });
         btn_google_sigin = findViewById(R.id.btn_google_login);
         btn_google_sigin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 signin_google();
             }
         });
+
 
     }
 
@@ -85,6 +101,15 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private Boolean verify_string(TextInputEditText editText, String text)
+    {
+        if(!text.isEmpty()) {
+            editText.setError(text);
+            return true;
+        }
+        return false;
     }
 
     private void open_signup_activity()
