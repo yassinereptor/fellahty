@@ -22,12 +22,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import es.dmoral.toasty.Toasty;
 
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private TextInputEditText signin_email;
     private TextInputEditText signin_password;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Toast.makeText(MainActivity.this, acct.getEmail(), Toast.LENGTH_LONG);
+        Toasty.info(MainActivity.this, acct.getEmail(), Toasty.LENGTH_LONG).show();
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -153,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("FB", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            //updateUI(user);
+                            verify_google_account(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("FB", "signInWithCredential:failure", task.getException());
@@ -165,6 +172,20 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    private void verify_google_account(final FirebaseUser user)
+    {
+        db.collection("user").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists())
+                    updateUI(user);
+                else
+                    startActivity(new Intent(MainActivity.this, GoogleSignupActivity.class));
+            }
+        });
+
+
+    }
 
     private void updateUI(FirebaseUser user)
     {

@@ -69,6 +69,48 @@ public class Functions {
         return (flag);
     }
 
+    public static Boolean verify_google_signup(Context context, TextInputEditText signup_email, TextInputEditText signup_name, TextInputEditText signup_phone)
+    {
+        Boolean flag = true;
+        String msg  = "";
+
+        String email = signup_email.getText().toString();
+        String name = signup_name.getText().toString();
+        String phone = signup_phone.getText().toString();
+
+        String name_req_msg = "Name is required !\n";
+        String phone_req_msg = "Phone is required !\n";
+        String email_valid_msg = "Email is unvalid !\n";
+        String phone_valid_msg = "Phone is unvalid !\n";
+
+        if(name.isEmpty()) {
+            msg += name_req_msg;
+            flag = false;
+        }
+        if(phone.isEmpty()) {
+            msg += phone_req_msg;
+            flag = false;
+        }
+        if(flag)
+        {
+            if(!isEmailValid(email) && !email.isEmpty()){
+                msg += email_valid_msg;
+                flag = false;
+                signup_email.setText("");
+            }
+            if(!isMobileValid(phone)){
+                msg += phone_valid_msg;
+                flag = false;
+                signup_phone.setText("");
+            }
+            if(!flag)
+                Toasty.error(context, removeLastChar(msg), Toasty.LENGTH_LONG).show();
+            return (flag);
+        }
+        Toasty.error(context, removeLastChar(msg), Toasty.LENGTH_LONG).show();
+        return (flag);
+    }
+
     public static Boolean verify_signin(Context context, TextInputEditText signup_email, TextInputEditText signup_password)
     {
         Boolean flag = true;
