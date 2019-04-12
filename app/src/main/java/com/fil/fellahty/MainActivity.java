@@ -65,8 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 String email = signin_email.getText().toString();
                 String password = signin_password.getText().toString();
 
-                if(verify_signin(MainActivity.this, signin_email, signin_password))
+                if(verify_signin(MainActivity.this, signin_email, signin_password)) {
                     signin_email(email, password);
+                }
             }
         });
         btn_google_sigin = findViewById(R.id.btn_google_login);
@@ -76,10 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 signin_google();
             }
         });
-
-
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -107,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     private void open_signup_activity()
     {
         startActivity(new Intent(MainActivity.this, SignupActivity.class));
@@ -134,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private void signin_google()
     {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 import es.dmoral.toasty.Toasty;
 
 public class Functions {
-
     public static Boolean verify_signup(Context context, TextInputEditText signup_email, TextInputEditText signup_name, TextInputEditText signup_phone, TextInputEditText signup_password)
     {
         Boolean flag = true;
