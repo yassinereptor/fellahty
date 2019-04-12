@@ -29,6 +29,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import es.dmoral.toasty.Toasty;
+
+import static com.fil.fellahty.classes.Functions.verify_signin;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView btn_signup;
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        signin_email = findViewById(R.id.signin_email);
+        signin_password = findViewById(R.id.signin_password);
 
         btn_login = findViewById(R.id.btn_login);
         btn_signup = findViewById(R.id.btn_signup);
@@ -58,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = signin_email.getText().toString();
                 String password = signin_password.getText().toString();
-                String email_err = "Email required !";
-                String password_err = "Email required !";
-                if(verify_string(signin_email, email_err) && verify_string(signin_password, password_err))
+
+                if(verify_signin(MainActivity.this, signin_email, signin_password))
                     signin_email(email, password);
             }
         });
@@ -97,19 +102,10 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w("FB", "Google sign in failed", e);
-                Toast.makeText(MainActivity.this, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show();
+                Toasty.error(MainActivity.this, "Authentication failed.",
+                        Toasty.LENGTH_SHORT).show();
             }
         }
-    }
-
-    private Boolean verify_string(TextInputEditText editText, String text)
-    {
-        if(!text.isEmpty()) {
-            editText.setError(text);
-            return true;
-        }
-        return false;
     }
 
     private void open_signup_activity()
@@ -131,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("FB", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toasty.error(MainActivity.this, "Authentication failed.",
+                                    Toasty.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }
@@ -165,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("FB", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toasty.error(MainActivity.this, "Authentication failed.",
+                                    Toasty.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }

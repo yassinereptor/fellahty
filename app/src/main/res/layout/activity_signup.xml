@@ -13,12 +13,11 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:src="@drawable/app_logo"
         app:srcCompat="@drawable/logo2" />
 
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_email"
+        android:id="@+id/input_layout_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -28,7 +27,7 @@
         android:theme="@style/TextInputLayoutAppearance">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/signup_email"
+            android:id="@+id/signup_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="15dp"
@@ -38,7 +37,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_name"
+        android:id="@+id/input_layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -48,7 +47,7 @@
         android:theme="@style/TextInputLayoutAppearance">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/signup_name"
+            android:id="@+id/signup_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/signup_email"
