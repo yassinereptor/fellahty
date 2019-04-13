@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText signin_password;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void verify_google_account(final FirebaseUser user)
     {
-        db.collection("user").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        db.collection("users").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists())
@@ -183,8 +182,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, GoogleSignupActivity.class));
             }
         });
-
-
     }
 
     private void updateUI(FirebaseUser user)

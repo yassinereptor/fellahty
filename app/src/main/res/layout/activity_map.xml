@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/colorAccent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:theme="@style/TextInputLayoutAppearance">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/signup_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Select Position"
+                android:inputType="phone"
+                android:paddingBottom="15dp"
+                android:layout_marginStart="30dp"
+                android:textColor="@color/colorAccentDarker" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btn_open_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_btn_shape_light_press"
+            android:layout_weight="3"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/ic_map_black_24dp" />
+
+    </LinearLayout>
+</LinearLayout>

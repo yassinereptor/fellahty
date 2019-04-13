@@ -252,7 +252,7 @@ public class SignupActivity extends AppCompatActivity  implements DialogInterfac
     private void updateUI(FirebaseUser user)
     {
         if(user != null)
-            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+            startActivity(new Intent(SignupActivity.this, MapActivity.class));
 
     }
 

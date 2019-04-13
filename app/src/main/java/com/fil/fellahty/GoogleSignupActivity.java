@@ -236,7 +236,7 @@ public class GoogleSignupActivity extends AppCompatActivity  implements DialogIn
     private void updateUI(FirebaseUser user)
     {
         if(user != null)
-            startActivity(new Intent(GoogleSignupActivity.this, HomeActivity.class));
+            startActivity(new Intent(GoogleSignupActivity.this, MapActivity.class));
 
     }
 
